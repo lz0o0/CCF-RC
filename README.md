@@ -45,7 +45,7 @@ python -m http.server 8000
 1. Fork 此仓库
 2. 在仓库设置中启用 GitHub Pages
 3. 选择 `main` 分支作为源
-4. 访问 `https://lz0o0/CCF-RC/CCF-RC.html`
+4. 访问 `https://lz0o0.github.io/CCF-RC/CCF-RC.html`
 
 ## 🛠️ 技术架构
 
