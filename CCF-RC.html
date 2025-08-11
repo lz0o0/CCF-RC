@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机会议截止日期统计</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="bg-controls">
+                <button class="bg-control-btn" onclick="uploadBackground()">自定义背景</button>
+                <button class="bg-control-btn" onclick="resetBackground()">重置背景</button>
+                <input type="file" id="bg-upload" class="bg-upload" accept="image/*" onchange="handleBackgroundUpload(event)">
+            </div>
+            <h1>计算机会议截止日期统计</h1>
+            <p class="subtitle">Computer Science Conference Deadline Countdowns</p>
+            <div class="filters">
+                <button class="filter-btn" data-filter="all">全部</button>
+                <button class="filter-btn active" data-filter="ccf-a">CCF A类</button>
+                <button class="filter-btn" data-filter="ccf-b">CCF B类</button>
+                <button class="filter-btn" data-filter="ccf-c">CCF C类</button>
+                <button class="filter-btn" data-filter="non-ccf">非CCF</button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="info-bar">
+                <span id="conference-count">显示 0 个会议</span>
+                <span class="timezone">时间显示为 Asia/Shanghai (UTC+8)</span>
+            </div>
+
+            <div class="conferences-grid" id="conferences-grid">
+                <!-- 会议卡片将通过 JavaScript 动态生成 -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>免责声明：本网站提供的数据仅供参考，请以官方网站信息为准。</p>
+            <p>如需添加或修改会议信息，请联系维护者。</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
