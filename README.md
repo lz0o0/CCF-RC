@@ -2,7 +2,7 @@
 
 计算机会议截止日期统计工具，涵盖安全、网络、数据挖掘、AI等领域，参考 [ccfddl.com](https://ccfddl.com/) 设计。
 
-[![Demo](https://img.shields.io/badge/Demo-Live-green)](https://your-username.github.io/CCF-RC/)
+[![Demo](https://img.shields.io/badge/Demo-Live-green)](https://lz0o0.github.io/CCF-RC/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#)
 
 ## ✨ 特性
@@ -34,7 +34,7 @@ FC, CT-RSA
 
 ### 本地运行
 ```bash
-git clone https://github.com/your-username/CCF-RC.git
+git clone https://github.com/lz0o0/CCF-RC.git
 cd CCF-RC
 # 直接打开 CCF-RC.html 或使用本地服务器
 python -m http.server 8000
@@ -45,7 +45,7 @@ python -m http.server 8000
 1. Fork 此仓库
 2. 在仓库设置中启用 GitHub Pages
 3. 选择 `main` 分支作为源
-4. 访问 `https://your-username.github.io/CCF-RC/CCF-RC.html`
+4. 访问 `https://lz0o0/CCF-RC/CCF-RC.html`
 
 ## 🛠️ 技术架构
 
@@ -130,7 +130,6 @@ CCF_RC/
 
 ## 📊 更新日志
 
-- **v2.1** - 修复内容显示问题，移除紫色滤镜
 - **v2.0** - 新增自定义背景功能，优化响应式布局
 - **v1.5** - 完善排序算法，增加31个重要会议
 - **v1.0** - 基础功能实现
