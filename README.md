@@ -27,8 +27,8 @@ ESORICS, ACSAC, RAID, IMC, SIGMETRICS, IWQoS, ICNP, CIKM, ECML-PKDD, DSN
 **CCF C类(8个)**  
 AsiaCCS, SecureComm, ACNS, PAM, DFRWS, PETS, PAKDD, IJCNN
 
-**其他重要(2个)**  
-FC, CT-RSA
+**其他重要(3个)**  
+FC, CT-RSA, FOCI
 
 ## 🚀 快速开始
 
