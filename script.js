@@ -252,6 +252,24 @@ const conferences = [
         website: "https://ct-rsa.org/2026/",
         note: "Cryptographers' track at RSA"
     },
+    {
+        name: "FOCI 2026",
+        fullName: "Free and Open Communications on the Internet",
+        ccfLevel: "non-ccf",
+        tags: ["网络安全", "隐私保护", "网络审查"],
+        deadlines: [
+            {
+                type: "Paper Submission",
+                date: "2026-04-20",
+                time: "23:59:59",
+                timezone: "UTC-11"
+            }
+        ],
+        location: "TBD (Co-located with PETS)",
+        conferenceDate: "July 14 2026",
+        website: "https://foci.community/",
+        note: "Workshop on internet freedom, co-located with PETS"
+    },
     // 网络测量
     {
         name: "IMC 2025",
@@ -346,19 +364,19 @@ const conferences = [
         deadlines: [
             {
                 type: "Abstract",
-                date: "2025-07-30",
+                date: "2025-07-23",
                 time: "23:59:59",
                 timezone: "UTC-12"
             },
             {
                 type: "Paper",
-                date: "2025-08-06",
+                date: "2025-07-23",
                 time: "23:59:59",
                 timezone: "UTC-12"
             }
         ],
         location: "London, UK",
-        conferenceDate: "May 11-14, 2026",
+        conferenceDate: "May 18-21, 2026",
         website: "https://infocom2026.ieee-infocom.org/",
         note: "Leading networking conference"
     },
