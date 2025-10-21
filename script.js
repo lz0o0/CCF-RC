@@ -212,20 +212,104 @@ function setupFilterButtons() {
     });
 }
 
-// 渲染会议列表
+// 渲染会议列表（支持时间轴视图和卡片视图）
 function renderConferences() {
     const grid = document.getElementById('conferences-grid');
     const filteredConferences = filterConferences();
     
     grid.innerHTML = '';
     
+    if (currentFilter === 'all') {
+        renderTimelineConferences();
+        return;
+    }
+
     filteredConferences.forEach(conference => {
         const card = createConferenceCard(conference);
         grid.appendChild(card);
     });
-    
+
     updateConferenceCount(filteredConferences.length);
 }
+
+// 简单时间轴渲染（恢复到方案A之前的轻量版）
+function renderTimelineConferences() {
+    const grid = document.getElementById('conferences-grid');
+    const now = new Date();
+    const sixMonthsLater = new Date(now.getFullYear(), now.getMonth() + 6, 1);
+
+    // 筛选未来6个月内的会议
+    const filtered = conferences.filter(conf => {
+        const nearest = getNearestDeadline(conf.deadlines);
+        const date = parseDeadlineDate(nearest);
+        return date >= now && date < sixMonthsLater;
+    });
+
+    const grouped = groupConferencesByMonth(filtered);
+
+    let total = 0;
+    Object.keys(grouped).sort().forEach(monthKey => {
+        const section = document.createElement('div');
+        section.className = 'timeline-month-section';
+
+        const title = document.createElement('h2');
+        title.className = 'timeline-month-title';
+        const [y, m] = monthKey.split('-');
+        title.textContent = `${y}年 ${parseInt(m,10)}月`;
+        section.appendChild(title);
+
+        grouped[monthKey].sort((a,b)=> parseDeadlineDate(getNearestDeadline(a.deadlines)) - parseDeadlineDate(getNearestDeadline(b.deadlines))).forEach(conf => {
+            total++;
+            const nearest = getNearestDeadline(conf.deadlines);
+            const item = document.createElement('div');
+            item.className = 'timeline-item';
+
+            const dateEl = document.createElement('div');
+            dateEl.className = 'timeline-date';
+            dateEl.textContent = formatDeadlineMonthDay(nearest);
+
+            const content = document.createElement('div');
+            content.className = 'timeline-content';
+            content.innerHTML = `
+                <a class="conference-name" href="${conf.website}" target="_blank">${conf.name}</a>
+                <div class="conference-extra">${conf.fullName ? conf.fullName : ''}</div>
+                <div class="conference-location">${conf.location ? conf.location : ''}</div>
+            `;
+
+            item.appendChild(dateEl);
+            item.appendChild(content);
+            section.appendChild(item);
+        });
+
+        grid.appendChild(section);
+    });
+
+    updateConferenceCount(total);
+}
+
+// 格式化为 MM/DD（用于时间轴日期）
+function formatDeadlineMonthDay(deadline) {
+    const d = parseDeadlineDate(deadline);
+    const mm = String(d.getMonth() + 1).padStart(2,'0');
+    const dd = String(d.getDate()).padStart(2,'0');
+    return `${mm}/${dd}`;
+}
+
+// 按月份分组，返回键为 'YYYY-MM'
+function groupConferencesByMonth(conferencesList) {
+    const grouped = {};
+    conferencesList.forEach(conf => {
+        const nearest = getNearestDeadline(conf.deadlines);
+        const d = parseDeadlineDate(nearest);
+        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(conf);
+    });
+    return grouped;
+}
+
+// 按时间轴样式渲染会议（用于 '全部' 过滤器）：展示未来6个月内的会议，按月分组
+// （timeline 渲染已被移除，保留卡片视图逻辑）
 
 // 过滤会议
 function filterConferences() {
@@ -483,3 +567,4 @@ function updateConferenceCount(count) {
     const countElement = document.getElementById('conference-count');
     countElement.textContent = `显示 ${count} 个会议`;
 }
+ 

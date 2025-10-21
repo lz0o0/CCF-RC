@@ -391,3 +391,58 @@ body {
         margin-left: 0;
     }
 }
+
+/* 时间轴样式（用于 '全部' 视图） */
+/* 简化时间轴样式（恢复到方案A之前的轻量外观） */
+.timeline-month-section {
+    grid-column: 1 / -1;
+    position: relative;
+    --axis-left: 80px; /* axis distance from section left */
+    --section-padding-left: 120px; /* space reserved for axis and nodes */
+    padding-left: var(--section-padding-left);
+    margin-bottom: 28px;
+}
+
+.timeline-month-title { color: #fff; font-size:1.4rem; margin-bottom:12px; }
+
+.timeline-month-section::before {
+    content: '';
+    position: absolute;
+    left: var(--axis-left);
+    top: 48px;
+    bottom: 16px;
+    width: 2px;
+    background: rgba(255,255,255,0.16);
+    z-index: 0;
+}
+
+.timeline-item { position: relative; display:flex; gap:18px; align-items:flex-start; padding:14px 0; z-index:1; }
+
+.timeline-date {
+    position: absolute;
+    /* compute negative offset relative to .timeline-item: axis-left - section-padding-left */
+    left: calc(var(--axis-left) - var(--section-padding-left));
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #4c6ef5;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    z-index: 2;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.timeline-node { display:none; }
+
+.timeline-content { background: transparent; padding: 6px 0 6px 40px; color: #fff; flex:1; }
+.timeline-content .conference-name { font-weight:800; color:#fff; }
+.conference-extra { color: rgba(255,255,255,0.9); margin-top:4px; }
+.conference-location { color: rgba(255,255,255,0.95); font-weight:700; margin-top:6px; }
+
+@media (max-width:700px){ 
+    .timeline-month-section { --section-padding-left: 80px; --axis-left: 56px; }
+    .timeline-date{ left: calc(var(--axis-left) - var(--section-padding-left)); transform: translate(-50%,-50%); }
+    .timeline-content{ padding-left: 28px; }
+}
