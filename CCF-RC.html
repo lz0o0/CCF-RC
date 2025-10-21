@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>计算机会议截止日期统计</title>
+    <title>个人向 > CCF 会议截稿</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
                 <button class="bg-control-btn" onclick="resetBackground()">重置背景</button>
                 <input type="file" id="bg-upload" class="bg-upload" accept="image/*" onchange="handleBackgroundUpload(event)">
             </div>
-            <h1>计算机会议截止日期统计</h1>
+            <h1>CCF会议截稿统计</h1>
             <p class="subtitle">Computer Science Conference Deadline Countdowns</p>
             <div class="filters">
                 <button class="filter-btn" data-filter="all">全部</button>
@@ -29,7 +29,7 @@
         <main class="main">
             <div class="info-bar">
                 <span id="conference-count">显示 0 个会议</span>
-                <span class="timezone">时间显示为 Asia/Shanghai (UTC+8)</span>
+                <span class="timezone">时间格式 UTC-12</span>
             </div>
 
             <div class="conferences-grid" id="conferences-grid">

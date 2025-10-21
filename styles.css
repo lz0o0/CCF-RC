@@ -21,14 +21,38 @@ body {
     padding: 15px;
 }
 
+/* When main has a custom background, make it cover the main area */
+.container .main.custom-bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* add a subtle overlay to improve text contrast */
+    position: relative;
+}
+.container .main.custom-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    pointer-events: none;
+    z-index: 0;
+}
+.container .main.custom-bg > * {
+    position: relative;
+    z-index: 1;
+}
+
 .header {
     text-align: center;
     margin-bottom: 30px;
-    background: rgba(255, 255, 255, 0.95);
+    /* glass background */
+    background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
     padding: 50px 25px 25px 25px;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.08);
     position: relative;
 }
 
@@ -61,10 +85,11 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #2d3748;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #ffffffc1;
     margin-bottom: 10px;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
 .subtitle {
@@ -106,12 +131,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.9);
+    /* glass */
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px) saturate(110%);
+    -webkit-backdrop-filter: blur(6px) saturate(110%);
     padding: 12px 20px;
     border-radius: 8px;
     margin-bottom: 15px;
     font-size: 0.85rem;
     color: #4a5568;
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 .conferences-grid {
@@ -151,13 +180,16 @@ body {
 }
 
 .conference-card {
-    background: rgba(255, 255, 255, 0.95);
+    /* glass-style card */
+    background: rgba(255,255,255,0.06);
     border-radius: 12px;
     padding: 18px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
     transition: all 0.3s ease;
     border-left: 4px solid #667eea;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px) saturate(110%);
+    -webkit-backdrop-filter: blur(6px) saturate(110%);
+    border: 1px solid rgba(255,255,255,0.04);
     min-height: 280px;
     height: auto;
     display: flex;
@@ -213,6 +245,24 @@ body {
     line-height: 1.4;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+/* Make card titles more visible on dark/glass backgrounds */
+.conference-card .conference-name {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.36rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.conference-card .conference-full-name {
+    color: rgba(255,255,255,0.88);
+}
+
+/* In timeline view, make the full conference name / extra info more subtle */
+.timeline-content .conference-full-name,
+.timeline-content .conference-extra {
+    color: rgba(255,255,255,0.72);
+    font-weight: 500;
 }
 
 .ccf-badge {
@@ -307,17 +357,18 @@ body {
 .conference-tag {
     display: inline-block;
     padding: 3px 6px;
-    background: #e2e8f0;
+    background: rgba(255,255,255,0.08);
     color: #4a5568;
     text-decoration: none;
     border-radius: 10px;
     font-size: 0.7rem;
     font-weight: 500;
     transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.04);
 }
 
 .conference-tag:hover {
-    background: #cbd5e0;
+    background: rgba(255,255,255,0.12);
     transform: translateY(-1px);
 }
 
@@ -325,11 +376,14 @@ body {
     text-align: center;
     margin-top: 50px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border-radius: 15px;
     color: #718096;
     font-size: 0.9rem;
     line-height: 1.6;
+    border: 1px solid rgba(255,255,255,0.04);
 }
 
 .expired {

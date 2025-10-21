@@ -4,7 +4,7 @@ const conferences = [
         name: "CCS 2026",
         fullName: "ACM Conference on Computer and Communications Security",
         ccfLevel: "ccf-a",
-        tags: ["安全+网络", "信息安全"],
+        tags: ["四大", "信息安全"],
         deadlines: [
             {
                 type: "Round 1",
@@ -28,7 +28,7 @@ const conferences = [
         name: "USENIX 2026",
         fullName: "USENIX Security Symposium",
         ccfLevel: "ccf-a",
-        tags: ["安全+网络", "信息安全"],
+        tags: ["四大", "信息安全"],
         deadlines: [
             {
                 type: "Cycle 1",
@@ -52,7 +52,7 @@ const conferences = [
         name: "S&P 2026", 
         fullName: "IEEE Symposium on Security and Privacy",
         ccfLevel: "ccf-a",
-        tags: ["安全+网络", "信息安全"],
+        tags: ["四大", "信息安全"],
         deadlines: [
             {
                 type: "Cycle 1",
@@ -76,7 +76,7 @@ const conferences = [
         name: "FOCI 2026",
         fullName: "Free and Open Communications on the Internet",
         ccfLevel: "non-ccf",
-        tags: ["网络安全", "隐私保护", "网络审查"],
+        tags: ["志愿社区", "隐私保护", "网络审查"],
         deadlines: [
             {
                 type: "Paper Submission",
@@ -95,7 +95,7 @@ const conferences = [
         name: "IMC 2026",
         fullName: "Internet Measurement Conference",
         ccfLevel: "ccf-b",
-        tags: ["网络测量", "网络"],
+        tags: ["网络测量", "小顶会"],
         deadlines: [
             {
                 type: "cycle 1",
@@ -136,8 +136,22 @@ const conferences = [
 ];
 
 // 全局变量
-let currentFilter = 'ccf-a'; // 默认显示CCF A类
+let currentFilter = 'all'; // 默认显示CCF A类
 let countdownIntervals = {};
+
+// 默认背景（当用户没有自定义背景时使用）
+const DEFAULT_BACKGROUNDS = [
+    'assets/berserk-11.jpg',
+    'assets/berserk-12.jpg',
+    'assets/eva-3.png',
+    'assets/wlop-1.png'
+];
+
+function pickRandomDefault() {
+    if (!DEFAULT_BACKGROUNDS || DEFAULT_BACKGROUNDS.length === 0) return null;
+    const idx = Math.floor(Math.random() * DEFAULT_BACKGROUNDS.length);
+    return DEFAULT_BACKGROUNDS[idx];
+}
 
 // 背景控制函数
 function uploadBackground() {
@@ -164,10 +178,18 @@ function setCustomBackground(imageUrl) {
 }
 
 function resetBackground() {
-    document.body.style.backgroundImage = '';
-    document.body.classList.remove('custom-bg');
-    // 清除本地存储
+    // 清除已保存的自定义背景并应用新的随机默认背景
     localStorage.removeItem('customBackground');
+    document.body.classList.remove('custom-bg');
+
+    const candidate = pickRandomDefault();
+    if (candidate) {
+        tryDefaultBackgrounds([candidate], function(foundUrl) {
+            setCustomBackground(foundUrl);
+        });
+    } else {
+        document.body.style.backgroundImage = '';
+    }
 }
 
 // 页面加载时检查是否有保存的背景
@@ -178,9 +200,39 @@ function loadSavedBackground() {
     }
 }
 
+// 如果没有保存的自定义背景，使用默认背景
+function loadSavedBackgroundWithDefault() {
+    const savedBackground = localStorage.getItem('customBackground');
+    if (savedBackground) {
+        setCustomBackground(savedBackground);
+    } else {
+        // 不在首次加载时设置默认图片；保持页面默认样式（例如渐变）
+        // 默认图片将仅在用户点击“重置背景”时随机加载。
+    }
+}
+
+// 依次尝试给定图片路径，找到第一个能加载的就回调
+function tryDefaultBackgrounds(urls, callback) {
+    if (!urls || urls.length === 0) return;
+    let i = 0;
+    function tryNext() {
+        if (i >= urls.length) return; // 没有可用图片
+        const img = new Image();
+        img.onload = function() {
+            callback(urls[i]);
+        };
+        img.onerror = function() {
+            i++;
+            tryNext();
+        };
+        img.src = urls[i];
+    }
+    tryNext();
+}
+
 // 初始化页面
 document.addEventListener('DOMContentLoaded', function() {
-    loadSavedBackground(); // 加载保存的背景
+    loadSavedBackgroundWithDefault(); // 加载保存的背景，若无则使用默认背景
     setupFilterButtons();
     renderConferences();
     updateCountdowns();
@@ -194,7 +246,7 @@ function setupFilterButtons() {
     // 设置默认选中CCF A类按钮
     filterButtons.forEach(btn => {
         btn.classList.remove('active');
-        if (btn.dataset.filter === 'ccf-a') {
+        if (btn.dataset.filter === 'all') {
             btn.classList.add('active');
         }
     });
