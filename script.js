@@ -1,50 +1,50 @@
 // 信息安全会议数据
 const conferences = [
     {
-        name: "CCS 2025",
+        name: "CCS 2026",
         fullName: "ACM Conference on Computer and Communications Security",
         ccfLevel: "ccf-a",
         tags: ["安全+网络", "信息安全"],
         deadlines: [
             {
                 type: "Round 1",
-                date: "2025-01-24",
+                date: "2026-01-14",
                 time: "23:59:59",
                 timezone: "UTC-12"
             },
             {
                 type: "Round 2", 
-                date: "2025-05-02",
+                date: "2026-04-29",
                 time: "23:59:59",
                 timezone: "UTC-12"
             }
         ],
         location: "Copenhagen, Denmark",
-        conferenceDate: "October 14-18, 2025",
-        website: "https://www.sigsac.org/ccs/CCS2025/",
-        note: "Two submission rounds"
+        conferenceDate: "November 15-19, 2026",
+        website: "https://www.sigsac.org/ccs/CCS2026/",
+        note: "Notice! Only submission deadline is determined and else stay with TBD!"
     },
     {
-        name: "USENIX Security 2026",
+        name: "USENIX 2026",
         fullName: "USENIX Security Symposium",
         ccfLevel: "ccf-a",
         tags: ["安全+网络", "信息安全"],
         deadlines: [
             {
                 type: "Cycle 1",
-                date: "2025-08-27",
+                date: "2025-08-19",
                 time: "23:59:59",
                 timezone: "UTC-12"
             },
             {
                 type: "Cycle 2",
-                date: "2026-02-06",
+                date: "2026-01-29",
                 time: "23:59:59", 
                 timezone: "UTC-12"
             }
         ],
         location: "Baltimore, MD, USA",
-        conferenceDate: "August 12-14, 2026",
+        conferenceDate: "August 12–14, 2026",
         website: "https://www.usenix.org/conference/usenixsecurity26",
         note: "Multiple submission cycles"
     },
@@ -55,202 +55,22 @@ const conferences = [
         tags: ["安全+网络", "信息安全"],
         deadlines: [
             {
-                type: "First Deadline",
-                date: "2025-11-14",
+                type: "Cycle 1",
+                date: "2025-5-29",
+                time: "23:59:59",
+                timezone: "UTC-12"
+            },
+            {
+                type: "Cycle 2",
+                date: "2025-11-6",
                 time: "23:59:59",
                 timezone: "UTC-12"
             }
         ],
         location: "San Francisco, CA, USA",
-        conferenceDate: "May 17-21, 2026",
-        website: "https://sp2026.ieee-security.org/",
+        conferenceDate: "May 18-20, 2026",
+        website: "https://www.ieee-security.org/TC/SP2026/",
         note: "Annual premier security conference"
-    },
-    {
-        name: "NDSS 2026",
-        fullName: "Network and Distributed System Security Symposium", 
-        ccfLevel: "ccf-a",
-        tags: ["安全+网络", "信息安全"],
-        deadlines: [
-            {
-                type: "Summer Deadline",
-                date: "2025-09-13",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "San Diego, CA, USA",
-        conferenceDate: "February 23-26, 2026",
-        website: "https://www.ndss-symposium.org/ndss2026/",
-        note: "Top-tier security symposium"
-    },
-    {
-        name: "AsiaCCS 2026",
-        fullName: "Asia Conference on Computer and Communications Security",
-        ccfLevel: "ccf-c", 
-        tags: ["安全+网络", "信息安全"],
-        deadlines: [
-            {
-                type: "1st Round",
-                date: "2025-08-26",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "2nd Round",
-                date: "2025-12-13",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Bangalore, India",
-        conferenceDate: "June 1-6, 2026",
-        website: "https://asiaccs2026.cse.iitkgp.ac.in/",
-        note: "Premier Asian security conference"
-    },
-    {
-        name: "ESORICS 2025",
-        fullName: "European Symposium on Research in Computer Security",
-        ccfLevel: "ccf-b",
-        tags: ["安全+网络", "信息安全"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-01-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-01-22",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Luxembourg",
-        conferenceDate: "September 22-26, 2025",
-        website: "https://esorics2025.org/",
-        note: "European security research symposium"
-    },
-    {
-        name: "ACSAC 2025",
-        fullName: "Annual Computer Security Applications Conference",
-        ccfLevel: "ccf-b",
-        tags: ["安全+网络", "信息安全"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-06-10",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Austin, TX, USA",
-        conferenceDate: "December 8-12, 2025", 
-        website: "https://www.acsac.org/2025/",
-        note: "Applied security conference"
-    },
-    {
-        name: "RAID 2025",
-        fullName: "International Symposium on Research in Attacks, Intrusions and Defenses",
-        ccfLevel: "ccf-b",
-        tags: ["安全+网络", "信息安全"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-03-28",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-04-04",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Padua, Italy",
-        conferenceDate: "September 30 - October 2, 2025",
-        website: "https://raid2025.org/",
-        note: "Attacks and defenses research"
-    },
-    {
-        name: "SecureComm 2025",
-        fullName: "International Conference on Security and Privacy in Communication Networks",
-        ccfLevel: "ccf-c",
-        tags: ["安全+通信", "信息安全"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-05-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Milan, Italy",
-        conferenceDate: "October 13-15, 2025",
-        website: "https://securecomm.org/2025/",
-        note: "Security in communications"
-    },
-    {
-        name: "ACNS 2026",
-        fullName: "Applied Cryptography and Network Security",
-        ccfLevel: "ccf-c",
-        tags: ["安全+网络", "密码学"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-11-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-11-22",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Vienna, Austria",
-        conferenceDate: "June 22-25, 2026",
-        website: "https://wp.nyu.edu/acns2026/",
-        note: "Applied cryptography conference"
-    },
-    {
-        name: "FC 2026",
-        fullName: "Financial Cryptography and Data Security",
-        ccfLevel: "non-ccf",
-        tags: ["密码学", "金融安全"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-09-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "San Juan, Puerto Rico",
-        conferenceDate: "February 23-27, 2026",
-        website: "https://fc26.ifca.ai/",
-        note: "Financial cryptography conference"
-    },
-    {
-        name: "CT-RSA 2026",
-        fullName: "RSA Conference Cryptographers' Track",
-        ccfLevel: "non-ccf",
-        tags: ["密码学", "信息安全"],
-        deadlines: [
-            {
-                type: "Paper Submission", 
-                date: "2025-10-01",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "San Francisco, CA, USA",
-        conferenceDate: "May 4-7, 2026",
-        website: "https://ct-rsa.org/2026/",
-        note: "Cryptographers' track at RSA"
     },
     {
         name: "FOCI 2026",
@@ -260,58 +80,40 @@ const conferences = [
         deadlines: [
             {
                 type: "Paper Submission",
-                date: "2026-04-20",
+                date: "2025-11-07",
                 time: "23:59:59",
-                timezone: "UTC-11"
+                timezone: "UTC-12"
             }
         ],
-        location: "TBD (Co-located with PETS)",
+        location: "Online Event",
         conferenceDate: "July 14 2026",
         website: "https://foci.community/",
         note: "Workshop on internet freedom, co-located with PETS"
     },
     // 网络测量
     {
-        name: "IMC 2025",
+        name: "IMC 2026",
         fullName: "Internet Measurement Conference",
         ccfLevel: "ccf-b",
         tags: ["网络测量", "网络"],
         deadlines: [
             {
-                type: "Paper Submission",
-                date: "2025-05-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Montreal, Canada",
-        conferenceDate: "October 28-30, 2025",
-        website: "https://conferences.sigcomm.org/imc/2025/",
-        note: "Internet measurement conference"
-    },
-    {
-        name: "SIGMETRICS 2026",
-        fullName: "ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems",
-        ccfLevel: "ccf-b",
-        tags: ["网络测量", "性能评估"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-10-15",
+                type: "cycle 1",
+                date: "2025-11-13",
                 time: "23:59:59",
                 timezone: "UTC-12"
             },
-            {
-                type: "Paper",
-                date: "2025-10-22",
+            {                
+                type: "cycle 2",
+                date: "2026-04-22",
                 time: "23:59:59",
                 timezone: "UTC-12"
             }
         ],
-        location: "Boston, MA, USA",
-        conferenceDate: "June 15-19, 2026",
-        website: "https://www.sigmetrics.org/sigmetrics2026/",
-        note: "Performance measurement and modeling"
+        location: "Karlsruhe, Germany",
+        conferenceDate: "November 3-6, 2026",
+        website: "https://conferences.sigcomm.org/imc/2025/",
+        note: "Internet measurement conference"
     },
     {
         name: "PAM 2026",
@@ -320,371 +122,17 @@ const conferences = [
         tags: ["网络测量", "网络"],
         deadlines: [
             {
-                type: "Paper Submission",
-                date: "2025-11-15",
+                type: "Abstract Registration",
+                date: "2025-10-15",
                 time: "23:59:59",
                 timezone: "UTC-12"
             }
         ],
-        location: "Puerto Varas, Chile",
+        location: "Virtual Event, Austria",
         conferenceDate: "March 23-25, 2026",
-        website: "https://pam2026.networks.imdea.org/",
+        website: "https://pam2026.at",
         note: "Passive and active measurement"
     },
-    // 网络+通信
-    {
-        name: "SIGCOMM 2025",
-        fullName: "ACM Special Interest Group on Data Communication",
-        ccfLevel: "ccf-a",
-        tags: ["网络+通信", "网络"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-01-25",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-02-01",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Los Angeles, CA, USA",
-        conferenceDate: "August 18-22, 2025",
-        website: "https://conferences.sigcomm.org/sigcomm/2025/",
-        note: "Premier networking conference"
-    },
-    {
-        name: "INFOCOM 2026",
-        fullName: "IEEE International Conference on Computer Communications",
-        ccfLevel: "ccf-a",
-        tags: ["网络+通信", "网络"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-07-23",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-07-23",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "London, UK",
-        conferenceDate: "May 18-21, 2026",
-        website: "https://infocom2026.ieee-infocom.org/",
-        note: "Leading networking conference"
-    },
-    {
-        name: "IWQoS 2025",
-        fullName: "International Workshop on Quality of Service",
-        ccfLevel: "ccf-b",
-        tags: ["网络+通信", "服务质量"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-03-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Guangzhou, China",
-        conferenceDate: "June 19-21, 2025",
-        website: "https://iwqos2025.ieee-iwqos.org/",
-        note: "Quality of service workshop"
-    },
-    {
-        name: "ICNP 2025",
-        fullName: "IEEE International Conference on Network Protocols",
-        ccfLevel: "ccf-b",
-        tags: ["网络+通信", "网络协议"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-05-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-05-22",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Charleroi, Belgium",
-        conferenceDate: "October 28-31, 2025",
-        website: "https://icnp25.cs.ucr.edu/",
-        note: "Network protocols conference"
-    },
-    // 网络
-    {
-        name: "TMC 2025",
-        fullName: "IEEE Transactions on Mobile Computing",
-        ccfLevel: "ccf-a",
-        tags: ["网络", "移动计算"],
-        deadlines: [
-            {
-                type: "Continuous Submission",
-                date: "2025-12-31",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Online",
-        conferenceDate: "2025",
-        website: "https://www.computer.org/csdl/journal/tm",
-        note: "Mobile computing journal"
-    },
-    {
-        name: "TON 2025",
-        fullName: "IEEE/ACM Transactions on Networking",
-        ccfLevel: "ccf-a",
-        tags: ["网络", "网络协议"],
-        deadlines: [
-            {
-                type: "Continuous Submission",
-                date: "2025-12-31",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Online",
-        conferenceDate: "2025",
-        website: "https://ton.lids.mit.edu/",
-        note: "Networking journal"
-    },
-    {
-        name: "NSDI 2026",
-        fullName: "USENIX Symposium on Networked Systems Design and Implementation",
-        ccfLevel: "ccf-a",
-        tags: ["网络", "系统设计"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-09-12",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-09-19",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Boston, MA, USA",
-        conferenceDate: "April 13-15, 2026",
-        website: "https://www.usenix.org/conference/nsdi26",
-        note: "Networked systems design"
-    },
-    // 取证、隐私保护
-    {
-        name: "TIFS 2025",
-        fullName: "IEEE Transactions on Information Forensics and Security",
-        ccfLevel: "ccf-a",
-        tags: ["取证、隐私保护", "信息安全"],
-        deadlines: [
-            {
-                type: "Continuous Submission",
-                date: "2025-12-31",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Online",
-        conferenceDate: "2025",
-        website: "https://signalprocessingsociety.org/publications-resources/ieee-transactions-information-forensics-and-security",
-        note: "Information forensics and security journal"
-    },
-    {
-        name: "DFRWS 2025",
-        fullName: "Digital Forensics Research Workshop",
-        ccfLevel: "ccf-c",
-        tags: ["取证、隐私保护", "数字取证"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-03-01",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Philadelphia, PA, USA",
-        conferenceDate: "July 14-17, 2025",
-        website: "https://dfrws.org/conferences/dfrws-usa-2025/",
-        note: "Digital forensics research"
-    },
-    {
-        name: "PETS 2026",
-        fullName: "Privacy Enhancing Technologies Symposium",
-        ccfLevel: "ccf-c",
-        tags: ["取证、隐私保护", "隐私技术"],
-        deadlines: [
-            {
-                type: "Round 1",
-                date: "2025-05-31",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Round 2",
-                date: "2025-08-31",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Bristol, UK",
-        conferenceDate: "July 15-19, 2026",
-        website: "https://petsymposium.org/2026/",
-        note: "Privacy enhancing technologies"
-    },
-    // 知识发现、数据挖掘
-    {
-        name: "CIKM 2025",
-        fullName: "ACM International Conference on Information and Knowledge Management",
-        ccfLevel: "ccf-b",
-        tags: ["知识发现、数据挖掘", "信息管理"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-05-16",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-05-23",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Boise, Idaho, USA",
-        conferenceDate: "October 21-25, 2025",
-        website: "https://cikm2025.org/",
-        note: "Information and knowledge management"
-    },
-    {
-        name: "ECML-PKDD 2025",
-        fullName: "European Conference on Machine Learning and Principles and Practice of Knowledge Discovery",
-        ccfLevel: "ccf-b",
-        tags: ["知识发现、数据挖掘", "机器学习"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-03-21",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-03-28",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Vilnius, Lithuania",
-        conferenceDate: "September 9-13, 2025",
-        website: "https://ecmlpkdd.org/2025/",
-        note: "Machine learning and knowledge discovery"
-    },
-    {
-        name: "PAKDD 2026",
-        fullName: "Pacific-Asia Conference on Knowledge Discovery and Data Mining",
-        ccfLevel: "ccf-c",
-        tags: ["知识发现、数据挖掘", "数据挖掘"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2025-12-06",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2025-12-13",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Tokyo, Japan",
-        conferenceDate: "May 25-28, 2026",
-        website: "https://pakdd2026.org/",
-        note: "Pacific-Asia knowledge discovery"
-    },
-    // 人工智能
-    {
-        name: "IJCNN 2025",
-        fullName: "International Joint Conference on Neural Networks",
-        ccfLevel: "ccf-c",
-        tags: ["人工智能", "神经网络"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-01-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Yokohama, Japan",
-        conferenceDate: "June 30 - July 5, 2025",
-        website: "https://2025.ijcnn.org/",
-        note: "Neural networks conference"
-    },
-    // 其他
-    {
-        name: "WWW 2025",
-        fullName: "The Web Conference",
-        ccfLevel: "ccf-a",
-        tags: ["其他", "万维网"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2024-10-17",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2024-10-24",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Sydney, Australia",
-        conferenceDate: "April 28 - May 2, 2025",
-        website: "https://www2025.thewebconf.org/",
-        note: "World Wide Web conference"
-    },
-    {
-        name: "DSN 2025",
-        fullName: "IEEE/IFIP International Conference on Dependable Systems and Networks",
-        ccfLevel: "ccf-b",
-        tags: ["其他", "可靠性"],
-        deadlines: [
-            {
-                type: "Abstract",
-                date: "2024-12-11",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Paper",
-                date: "2024-12-18",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Brisbane, Australia",
-        conferenceDate: "June 23-26, 2025",
-        website: "https://dsn2025.github.io/",
-        note: "Dependable systems and networks"
-    }
 ];
 
 // 全局变量
@@ -891,40 +339,57 @@ function createConferenceCard(conference) {
 // 获取最近的截止日期
 function getNearestDeadline(deadlines) {
     const now = new Date();
-    
+
     // 找到所有未过期的截止日期
     const futureDeadlines = deadlines.filter(deadline => {
         const deadlineDate = parseDeadlineDate(deadline);
+        console.log(`Checking deadline: ${deadline.date} -> Parsed: ${deadlineDate}`);
         return deadlineDate > now;
     });
-    
+
     // 如果有未过期的截止日期，返回最近的一个
     if (futureDeadlines.length > 0) {
-        return futureDeadlines.reduce((nearest, current) => {
+        const nearest = futureDeadlines.reduce((nearest, current) => {
             const nearestDate = parseDeadlineDate(nearest);
             const currentDate = parseDeadlineDate(current);
             return currentDate < nearestDate ? current : nearest;
         });
+        console.log(`Nearest future deadline: ${nearest.date}`);
+        return nearest;
     }
-    
+
     // 如果所有截止日期都已过期，返回最晚的一个
-    return deadlines.reduce((latest, current) => {
+    const latest = deadlines.reduce((latest, current) => {
         const latestDate = parseDeadlineDate(latest);
         const currentDate = parseDeadlineDate(current);
         return currentDate > latestDate ? current : latest;
     });
+    console.log(`All deadlines expired. Latest deadline: ${latest.date}`);
+    return latest;
 }
 
-// 解析截止日期
+// 修复日期解析问题，标准化日期格式
 function parseDeadlineDate(deadline) {
-    const dateTimeStr = `${deadline.date}T${deadline.time}`;
-    const date = new Date(dateTimeStr);
-    
-    // 处理时区转换
-    const timezoneOffset = getTimezoneOffset(deadline.timezone);
-    date.setMinutes(date.getMinutes() + timezoneOffset);
-    
-    return date;
+    try {
+        // 标准化日期格式为 YYYY-MM-DD
+        const standardizedDate = deadline.date.split('-').map(part => part.padStart(2, '0')).join('-');
+        const dateTimeStr = `${standardizedDate}T${deadline.time}`;
+        const date = new Date(dateTimeStr);
+
+        if (isNaN(date.getTime())) {
+            console.error(`Invalid date format after standardization: ${dateTimeStr}`);
+            return new Date(); // 返回当前时间以避免崩溃
+        }
+
+        // 处理时区转换
+        const timezoneOffset = getTimezoneOffset(deadline.timezone);
+        date.setMinutes(date.getMinutes() + timezoneOffset);
+
+        return date;
+    } catch (error) {
+        console.error("Error parsing deadline date:", error);
+        return new Date(); // 返回当前时间以避免崩溃
+    }
 }
 
 // 获取时区偏移量（分钟）
@@ -974,26 +439,31 @@ function getCCFLabelText(ccfLevel) {
     return levelMap[ccfLevel] || ccfLevel;
 }
 
-// 更新倒计时
+// 更新倒计时函数，添加错误处理
 function updateCountdowns() {
     conferences.forEach(conference => {
         const countdownId = `countdown-${conference.name.replace(/\s+/g, '-')}`;
         const countdownElement = document.getElementById(countdownId);
-        
-        if (countdownElement) {
-            const nearestDeadline = getNearestDeadline(conference.deadlines);
-            const deadlineDate = parseDeadlineDate(nearestDeadline);
-            const now = new Date();
-            const timeDiff = deadlineDate - now;
-            
-            if (timeDiff > 0) {
-                const countdown = calculateCountdown(timeDiff);
-                countdownElement.querySelector('.countdown-value').textContent = 
-                    `${countdown.days}天 ${countdown.hours}时 ${countdown.minutes}分 ${countdown.seconds}秒`;
-            } else {
-                countdownElement.querySelector('.countdown-value').textContent = '已截止';
-                countdownElement.parentElement.classList.add('expired');
-            }
+
+        if (!countdownElement) {
+            console.warn(`Countdown element not found for conference: ${conference.name}`);
+            return; // 跳过不存在的元素
+        }
+
+        const nearestDeadline = getNearestDeadline(conference.deadlines);
+        console.log(`Updating countdown for ${conference.name}. Nearest deadline: ${nearestDeadline.date}`);
+
+        const deadlineDate = parseDeadlineDate(nearestDeadline);
+        const now = new Date();
+        const timeDiff = deadlineDate - now;
+
+        if (timeDiff > 0) {
+            const countdown = calculateCountdown(timeDiff);
+            countdownElement.querySelector('.countdown-value').textContent = 
+                `${countdown.days}天 ${countdown.hours}时 ${countdown.minutes}分 ${countdown.seconds}秒`;
+        } else {
+            countdownElement.querySelector('.countdown-value').textContent = '已截止';
+            countdownElement.parentElement.classList.add('expired');
         }
     });
 }

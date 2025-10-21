@@ -1,9 +1,6 @@
-# CCF-RC 会议截止日期统计
+# 个人向 CCF-RC 会议截止日期统计
 
-计算机会议截止日期统计工具，涵盖安全、网络、数据挖掘、AI等领域，参考 [ccfddl.com](https://ccfddl.com/) 设计。
-
-[![Demo](https://img.shields.io/badge/Demo-Live-green)](https://lz0o0.github.io/CCF-RC/)
-[![License](https://img.shields.io/badge/License-MIT-blue)](#)
+个人向会议截稿统计工具，参考 [ccfddl.com](https://ccfddl.com/) 设计。
 
 ## ✨ 特性
 
@@ -12,23 +9,23 @@
 - 🏷️ **分类标签** - A/B/C类及领域标签
 - 📱 **响应式设计** - 1-4栏自适应布局
 - ⚡ **智能排序** - 紧急会议优先显示
-- 🌍 **时区统一** - 北京时间(UTC+8)
+- 🌍 **时区统一** - 北京时间(UTC+12)
 - 🖼️ **自定义背景** - 支持上传个人背景图片
 - 🎨 **优化布局** - 横向卡片设计，内容完整显示
 
 ## 📊 会议统计
 
-**CCF A类(11个)**  
-CCS, S&P, USENIX Security, NDSS, SIGCOMM, INFOCOM, TMC, TON, NSDI, TIFS, WWW
+**CCF A类(3+...)**  
+CCS, S&P, USENIX Security...
 
-**CCF B类(10个)**  
-ESORICS, ACSAC, RAID, IMC, SIGMETRICS, IWQoS, ICNP, CIKM, ECML-PKDD, DSN
+**CCF B类(1+...)**  
+IMC...
 
-**CCF C类(8个)**  
-AsiaCCS, SecureComm, ACNS, PAM, DFRWS, PETS, PAKDD, IJCNN
+**CCF C类(1+...)**  
+PAM...
 
-**其他重要(3个)**  
-FC, CT-RSA, FOCI
+**其他重要(1+...)**  
+FOCI...
 
 ## 🚀 快速开始
 
@@ -127,12 +124,6 @@ CCF_RC/
 3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送分支 (`git push origin feature/AmazingFeature`)
 5. 创建 Pull Request
-
-## 📊 更新日志
-
-- **v2.0** - 新增自定义背景功能，优化响应式布局
-- **v1.5** - 完善排序算法，增加31个重要会议
-- **v1.0** - 基础功能实现
 
 ## 📄 许可证
 
