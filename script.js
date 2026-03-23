@@ -1,143 +1,9 @@
-// 信息安全会议数据
-const conferences = [
-    {
-        name: "CCS 2026",
-        fullName: "ACM Conference on Computer and Communications Security",
-        ccfLevel: "ccf-a",
-        tags: ["四大", "信息安全"],
-        deadlines: [
-            {
-                type: "Round 1",
-                date: "2026-01-14",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Round 2", 
-                date: "2026-04-29",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Copenhagen, Denmark",
-        conferenceDate: "November 15-19, 2026",
-        website: "https://www.sigsac.org/ccs/CCS2026/",
-        note: "Notice! Only submission deadline is determined and else stay with TBD!"
-    },
-    {
-        name: "USENIX 2026",
-        fullName: "USENIX Security Symposium",
-        ccfLevel: "ccf-a",
-        tags: ["四大", "信息安全"],
-        deadlines: [
-            {
-                type: "Cycle 1",
-                date: "2025-08-19",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Cycle 2",
-                date: "2026-01-29",
-                time: "23:59:59", 
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Baltimore, MD, USA",
-        conferenceDate: "August 12–14, 2026",
-        website: "https://www.usenix.org/conference/usenixsecurity26",
-        note: "Multiple submission cycles"
-    },
-    {
-        name: "S&P 2026", 
-        fullName: "IEEE Symposium on Security and Privacy",
-        ccfLevel: "ccf-a",
-        tags: ["四大", "信息安全"],
-        deadlines: [
-            {
-                type: "Cycle 1",
-                date: "2025-5-29",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {
-                type: "Cycle 2",
-                date: "2025-11-6",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "San Francisco, CA, USA",
-        conferenceDate: "May 18-20, 2026",
-        website: "https://www.ieee-security.org/TC/SP2026/",
-        note: "Annual premier security conference"
-    },
-    {
-        name: "FOCI 2026",
-        fullName: "Free and Open Communications on the Internet",
-        ccfLevel: "non-ccf",
-        tags: ["志愿社区", "隐私保护", "网络审查"],
-        deadlines: [
-            {
-                type: "Paper Submission",
-                date: "2025-11-07",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Online Event",
-        conferenceDate: "July 14 2026",
-        website: "https://foci.community/",
-        note: "Workshop on internet freedom, co-located with PETS"
-    },
-    // 网络测量
-    {
-        name: "IMC 2026",
-        fullName: "Internet Measurement Conference",
-        ccfLevel: "ccf-b",
-        tags: ["网络测量", "小顶会"],
-        deadlines: [
-            {
-                type: "cycle 1",
-                date: "2025-11-13",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            },
-            {                
-                type: "cycle 2",
-                date: "2026-04-22",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Karlsruhe, Germany",
-        conferenceDate: "November 3-6, 2026",
-        website: "https://conferences.sigcomm.org/imc/2025/",
-        note: "Internet measurement conference"
-    },
-    {
-        name: "PAM 2026",
-        fullName: "Passive and Active Measurement Conference",
-        ccfLevel: "ccf-c",
-        tags: ["网络测量", "网络"],
-        deadlines: [
-            {
-                type: "Abstract Registration",
-                date: "2025-10-15",
-                time: "23:59:59",
-                timezone: "UTC-12"
-            }
-        ],
-        location: "Virtual Event, Austria",
-        conferenceDate: "March 23-25, 2026",
-        website: "https://pam2026.at",
-        note: "Passive and active measurement"
-    },
-];
+const DATA_SOURCE = 'data/conferences.json';
 
 // 全局变量
-let currentFilter = 'all'; // 默认显示CCF A类
-let countdownIntervals = {};
+let conferences = [];
+let currentFilter = 'all';
+let countdownTimer = null;
 
 // 默认背景（当用户没有自定义背景时使用）
 const DEFAULT_BACKGROUNDS = [
@@ -231,19 +97,69 @@ function tryDefaultBackgrounds(urls, callback) {
 }
 
 // 初始化页面
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     loadSavedBackgroundWithDefault(); // 加载保存的背景，若无则使用默认背景
     setupFilterButtons();
+    setStatusMessage('正在加载会议数据...');
+
+    const loaded = await loadConferenceData();
+    if (!loaded) {
+        return;
+    }
+
     renderConferences();
     updateCountdowns();
-    setInterval(updateCountdowns, 1000); // 每秒更新倒计时
+    countdownTimer = setInterval(updateCountdowns, 1000); // 每秒更新倒计时
 });
+
+async function loadConferenceData() {
+    try {
+        const response = await fetch(DATA_SOURCE, { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data)) {
+            throw new Error('Conference data must be an array');
+        }
+
+        conferences = data.filter(isValidConferenceRecord);
+        if (conferences.length === 0) {
+            setStatusMessage('暂无可显示的会议数据。');
+            updateConferenceCount(0);
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error('Failed to load conference data:', error);
+        setStatusMessage('会议数据加载失败，请通过本地服务器访问页面并检查 data/conferences.json。');
+        updateConferenceCount(0);
+        return false;
+    }
+}
+
+function isValidConferenceRecord(record) {
+    return Boolean(
+        record &&
+        typeof record.name === 'string' &&
+        Array.isArray(record.deadlines) &&
+        record.deadlines.length > 0 &&
+        typeof record.website === 'string'
+    );
+}
+
+function setStatusMessage(message) {
+    const grid = document.getElementById('conferences-grid');
+    grid.innerHTML = `<div class="empty-state">${message}</div>`;
+}
 
 // 设置过滤按钮
 function setupFilterButtons() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     
-    // 设置默认选中CCF A类按钮
+    // 设置默认选中“全部”按钮
     filterButtons.forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.filter === 'all') {
@@ -276,6 +192,12 @@ function renderConferences() {
         return;
     }
 
+    if (filteredConferences.length === 0) {
+        setStatusMessage('当前筛选条件下暂无会议。');
+        updateConferenceCount(0);
+        return;
+    }
+
     filteredConferences.forEach(conference => {
         const card = createConferenceCard(conference);
         grid.appendChild(card);
@@ -300,7 +222,15 @@ function renderTimelineConferences() {
     const grouped = groupConferencesByMonth(filtered);
 
     let total = 0;
-    Object.keys(grouped).sort().forEach(monthKey => {
+    const monthKeys = Object.keys(grouped).sort();
+
+    if (monthKeys.length === 0) {
+        setStatusMessage('未来 6 个月内暂无会议。');
+        updateConferenceCount(0);
+        return;
+    }
+
+    monthKeys.forEach(monthKey => {
         const section = document.createElement('div');
         section.className = 'timeline-month-section';
 
@@ -479,49 +409,45 @@ function getNearestDeadline(deadlines) {
     // 找到所有未过期的截止日期
     const futureDeadlines = deadlines.filter(deadline => {
         const deadlineDate = parseDeadlineDate(deadline);
-        console.log(`Checking deadline: ${deadline.date} -> Parsed: ${deadlineDate}`);
         return deadlineDate > now;
     });
 
     // 如果有未过期的截止日期，返回最近的一个
     if (futureDeadlines.length > 0) {
-        const nearest = futureDeadlines.reduce((nearest, current) => {
+        return futureDeadlines.reduce((nearest, current) => {
             const nearestDate = parseDeadlineDate(nearest);
             const currentDate = parseDeadlineDate(current);
             return currentDate < nearestDate ? current : nearest;
         });
-        console.log(`Nearest future deadline: ${nearest.date}`);
-        return nearest;
     }
 
     // 如果所有截止日期都已过期，返回最晚的一个
-    const latest = deadlines.reduce((latest, current) => {
+    return deadlines.reduce((latest, current) => {
         const latestDate = parseDeadlineDate(latest);
         const currentDate = parseDeadlineDate(current);
         return currentDate > latestDate ? current : latest;
     });
-    console.log(`All deadlines expired. Latest deadline: ${latest.date}`);
-    return latest;
 }
 
-// 修复日期解析问题，标准化日期格式
+// 将 deadline 解析为真实时间点，支持 UTC±X 格式
 function parseDeadlineDate(deadline) {
     try {
-        // 标准化日期格式为 YYYY-MM-DD
-        const standardizedDate = deadline.date.split('-').map(part => part.padStart(2, '0')).join('-');
-        const dateTimeStr = `${standardizedDate}T${deadline.time}`;
-        const date = new Date(dateTimeStr);
+        const [yearStr, monthStr, dayStr] = deadline.date.split('-');
+        const [hourStr = '0', minuteStr = '0', secondStr = '0'] = deadline.time.split(':');
+        const year = Number(yearStr);
+        const month = Number(monthStr);
+        const day = Number(dayStr);
+        const hour = Number(hourStr);
+        const minute = Number(minuteStr);
+        const second = Number(secondStr);
 
-        if (isNaN(date.getTime())) {
-            console.error(`Invalid date format after standardization: ${dateTimeStr}`);
-            return new Date(); // 返回当前时间以避免崩溃
+        if ([year, month, day, hour, minute, second].some(Number.isNaN)) {
+            throw new Error(`Invalid deadline fields: ${deadline.date} ${deadline.time}`);
         }
 
-        // 处理时区转换
-        const timezoneOffset = getTimezoneOffset(deadline.timezone);
-        date.setMinutes(date.getMinutes() + timezoneOffset);
-
-        return date;
+        const timezoneOffsetMinutes = getTimezoneOffset(deadline.timezone);
+        const utcTimestamp = Date.UTC(year, month - 1, day, hour, minute, second) - timezoneOffsetMinutes * 60 * 1000;
+        return new Date(utcTimestamp);
     } catch (error) {
         console.error("Error parsing deadline date:", error);
         return new Date(); // 返回当前时间以避免崩溃
@@ -532,8 +458,8 @@ function parseDeadlineDate(deadline) {
 function getTimezoneOffset(timezone) {
     const utcOffsetMatch = timezone.match(/UTC([+-]\d+)/);
     if (utcOffsetMatch) {
-        const offset = parseInt(utcOffsetMatch[1]);
-        return -offset * 60; // 转换为分钟，并取反
+        const offset = parseInt(utcOffsetMatch[1], 10);
+        return offset * 60;
     }
     return 0;
 }
@@ -587,8 +513,6 @@ function updateCountdowns() {
         }
 
         const nearestDeadline = getNearestDeadline(conference.deadlines);
-        console.log(`Updating countdown for ${conference.name}. Nearest deadline: ${nearestDeadline.date}`);
-
         const deadlineDate = parseDeadlineDate(nearestDeadline);
         const now = new Date();
         const timeDiff = deadlineDate - now;

@@ -1,0 +1,80 @@
+[
+  {
+    "name": "CCS 2026",
+    "fullName": "ACM Conference on Computer and Communications Security",
+    "ccfLevel": "ccf-a",
+    "tags": ["四大", "信息安全"],
+    "deadlines": [
+      {
+        "type": "Round 1",
+        "date": "2026-01-14",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      },
+      {
+        "type": "Cycle 2 Abstract",
+        "date": "2026-04-22",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      },
+      {
+        "type": "Cycle 2 Paper Submission",
+        "date": "2026-04-29",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      }
+    ],
+    "location": "Copenhagen, Denmark",
+    "conferenceDate": "November 15-19, 2026",
+    "website": "https://www.sigsac.org/ccs/CCS2026/",
+    "note": "Notice! Only submission deadline is determined and else stay with TBD!"
+  },
+  {
+    "name": "FOCI 2026",
+    "fullName": "Free and Open Communications on the Internet",
+    "ccfLevel": "non-ccf",
+    "tags": ["志愿社区", "隐私保护", "网络审查"],
+    "deadlines": [
+      {
+        "type": "Issue 2 Submission",
+        "date": "2026-04-20",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      }
+    ],
+    "location": "Calgary, Canada + Online",
+    "conferenceDate": "July 20, 2026",
+    "website": "https://foci.community/",
+    "note": "Issue 2 is a hybrid event co-located with PETS 2026"
+  },
+  {
+    "name": "IMC 2026",
+    "fullName": "Internet Measurement Conference",
+    "ccfLevel": "ccf-b",
+    "tags": ["网络测量", "小顶会"],
+    "deadlines": [
+      {
+        "type": "Cycle 1 Registration",
+        "date": "2025-11-13",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      },
+      {
+        "type": "Cycle 2 Registration",
+        "date": "2026-04-22",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      },
+      {
+        "type": "Cycle 2 Paper Submission",
+        "date": "2026-04-29",
+        "time": "23:59:59",
+        "timezone": "UTC-12"
+      }
+    ],
+    "location": "Karlsruhe, Germany",
+    "conferenceDate": "October 12-16, 2026",
+    "website": "https://conferences.sigcomm.org/imc/2026/",
+    "note": "Cycle 2 submission and one-shot revision window are both open in spring 2026"
+  }
+]

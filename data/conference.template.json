@@ -1,0 +1,24 @@
+{
+  "name": "CONF 2027",
+  "fullName": "Conference Full Name",
+  "ccfLevel": "ccf-a",
+  "tags": ["领域1", "领域2"],
+  "deadlines": [
+    {
+      "type": "Abstract",
+      "date": "2026-10-01",
+      "time": "23:59:59",
+      "timezone": "UTC-12"
+    },
+    {
+      "type": "Paper Submission",
+      "date": "2026-10-08",
+      "time": "23:59:59",
+      "timezone": "UTC-12"
+    }
+  ],
+  "location": "City, Country",
+  "conferenceDate": "Month 10-14, 2027",
+  "website": "https://example.org/conf2027/",
+  "note": "Optional note"
+}
