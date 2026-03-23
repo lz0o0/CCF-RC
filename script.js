@@ -6,18 +6,16 @@ let currentFilter = 'all';
 let countdownTimer = null;
 
 // 默认背景（当用户没有自定义背景时使用）
-const DEFAULT_BACKGROUNDS = [
+const BUILTIN_BACKGROUNDS = [
     'assets/berserk-11.jpg',
     'assets/berserk-12.jpg',
     'assets/eva-3.png',
-    'assets/wlop-1.png'
+    'assets/wlop-1.png',
+    'assets/wlop-2.jpeg'
 ];
-
-function pickRandomDefault() {
-    if (!DEFAULT_BACKGROUNDS || DEFAULT_BACKGROUNDS.length === 0) return null;
-    const idx = Math.floor(Math.random() * DEFAULT_BACKGROUNDS.length);
-    return DEFAULT_BACKGROUNDS[idx];
-}
+const DEFAULT_BACKGROUND = 'assets/wlop-2.jpeg';
+const DEFAULT_BACKGROUND_INDEX = Math.max(BUILTIN_BACKGROUNDS.indexOf(DEFAULT_BACKGROUND), 0);
+const DEFAULT_BACKGROUND_INDEX_KEY = 'defaultBackgroundIndex';
 
 // 背景控制函数
 function uploadBackground() {
@@ -44,18 +42,11 @@ function setCustomBackground(imageUrl) {
 }
 
 function resetBackground() {
-    // 清除已保存的自定义背景并应用新的随机默认背景
+    // 清除已保存的自定义背景，并在内置背景中切换到下一张
     localStorage.removeItem('customBackground');
     document.body.classList.remove('custom-bg');
-
-    const candidate = pickRandomDefault();
-    if (candidate) {
-        tryDefaultBackgrounds([candidate], function(foundUrl) {
-            setCustomBackground(foundUrl);
-        });
-    } else {
-        document.body.style.backgroundImage = '';
-    }
+    const nextIndex = (getStoredDefaultBackgroundIndex() + 1) % BUILTIN_BACKGROUNDS.length;
+    applyBuiltinBackground(nextIndex);
 }
 
 // 页面加载时检查是否有保存的背景
@@ -72,9 +63,24 @@ function loadSavedBackgroundWithDefault() {
     if (savedBackground) {
         setCustomBackground(savedBackground);
     } else {
-        // 不在首次加载时设置默认图片；保持页面默认样式（例如渐变）
-        // 默认图片将仅在用户点击“重置背景”时随机加载。
+        applyBuiltinBackground(getStoredDefaultBackgroundIndex());
     }
+}
+
+function applyBuiltinBackground(index) {
+    const normalizedIndex = index >= 0 && index < BUILTIN_BACKGROUNDS.length ? index : DEFAULT_BACKGROUND_INDEX;
+    tryDefaultBackgrounds([BUILTIN_BACKGROUNDS[normalizedIndex]], function(foundUrl) {
+        localStorage.setItem(DEFAULT_BACKGROUND_INDEX_KEY, String(normalizedIndex));
+        setCustomBackground(foundUrl);
+    });
+}
+
+function getStoredDefaultBackgroundIndex() {
+    const storedIndex = Number(localStorage.getItem(DEFAULT_BACKGROUND_INDEX_KEY));
+    if (Number.isInteger(storedIndex) && storedIndex >= 0 && storedIndex < BUILTIN_BACKGROUNDS.length) {
+        return storedIndex;
+    }
+    return DEFAULT_BACKGROUND_INDEX;
 }
 
 // 依次尝试给定图片路径，找到第一个能加载的就回调
